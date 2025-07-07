@@ -112,29 +112,35 @@ public class Main {
         );
 
         // Sort persons by age ascendingly
-        people.sort(Comparator.comparingInt(Person::getAge));
+       List<Person> sortedbyAgeAscendingly =  people.stream()
+               .sorted(Comparator.comparingInt(Person::getAge))
+               .toList();
 
         // Print output
         System.out.println("Sorted by age (ascending):");
         Consumer<Person> printSortedPeopleByAgeAscendingly = System.out::println;
-        people.forEach(printSortedPeopleByAgeAscendingly);
+        sortedbyAgeAscendingly.forEach(printSortedPeopleByAgeAscendingly);
         System.out.println();
 
         // Sort persons by name
-        people.sort(Comparator.comparing(Person::getName));
+        List<Person> sortedByName = people.stream()
+                .sorted(Comparator.comparing(Person::getName))
+                .toList();
 
         // Print output
         System.out.println("Sorted by name:");
         Consumer<Person> printPeopleSortedByName = System.out::println;
-        people.forEach(printPeopleSortedByName);
+        sortedByName.forEach(printPeopleSortedByName);
         System.out.println();
 
         // Sort persons by age ascendingly
-        people.sort(Comparator.comparingInt(Person::getAge).reversed());
+        List<Person> sortedByAgeDescendingly = people.stream()
+                .sorted(Comparator.comparingInt(Person::getAge).reversed())
+                .toList();
 
         // Print output
         System.out.println("Sorted by age (descending):");
         Consumer<Person> printSortedPeopleByAgeDescendingly = System.out::println;
-        people.forEach(printSortedPeopleByAgeDescendingly);
+        sortedByAgeDescendingly.forEach(printSortedPeopleByAgeDescendingly);
     }
 }
